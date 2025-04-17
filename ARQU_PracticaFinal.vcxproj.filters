@@ -1,18 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="File di origine">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="File di intestazione">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
-    <Filter Include="File di risorse">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
     <Filter Include="saves">
       <UniqueIdentifier>{da344bcd-d40d-436c-b612-4867bfdd0db0}</UniqueIdentifier>
     </Filter>
@@ -49,11 +37,20 @@
     <Filter Include="include\utils">
       <UniqueIdentifier>{3ea0f77d-488f-43a8-af2a-8ff33d218443}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\ecs">
+      <UniqueIdentifier>{3ac0a86a-88d9-4582-ba31-95310ddd4f2e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\engine">
+      <UniqueIdentifier>{a8a2d33b-6ff2-4a13-9808-668dea9ca3f0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\engine\manager">
+      <UniqueIdentifier>{cdf9f758-81c2-4d29-8883-3d036b60be91}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\system">
+      <UniqueIdentifier>{d29b66db-7d85-48e2-a055-d46ae29e6565}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ARQU_PracticaFinal.cpp">
-      <Filter>File di origine</Filter>
-    </ClCompile>
     <ClCompile Include="include\utils\Utilities.cpp">
       <Filter>include\utils</Filter>
     </ClCompile>
@@ -62,6 +59,48 @@
     </ClCompile>
     <ClCompile Include="include\libs\tigr.c">
       <Filter>include\libs</Filter>
+    </ClCompile>
+    <ClCompile Include="include\ECS\Entity.cpp">
+      <Filter>include\ecs</Filter>
+    </ClCompile>
+    <ClCompile Include="include\ECS\Component.cpp">
+      <Filter>include\ecs</Filter>
+    </ClCompile>
+    <ClCompile Include="include\ECS\System.cpp">
+      <Filter>include\ecs</Filter>
+    </ClCompile>
+    <ClCompile Include="include\ECS\Coordinator.cpp">
+      <Filter>include\ecs</Filter>
+    </ClCompile>
+    <ClCompile Include="ARQU_PracticaFinal.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Engine\ENGINE.cpp">
+      <Filter>src\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Engine\Manager\InputManager.cpp">
+      <Filter>src\engine\manager</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Engine\Manager\TimerManager.cpp">
+      <Filter>src\engine\manager</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Engine\Manager\SceneManager.cpp">
+      <Filter>src\engine\manager</Filter>
+    </ClCompile>
+    <ClCompile Include="game\main.cpp">
+      <Filter>game</Filter>
+    </ClCompile>
+    <ClCompile Include="game\System\CollisionSystem.cpp">
+      <Filter>game\system</Filter>
+    </ClCompile>
+    <ClCompile Include="game\System\EnemySystem.cpp">
+      <Filter>game\system</Filter>
+    </ClCompile>
+    <ClCompile Include="game\System\PlayerSystem.cpp">
+      <Filter>game\system</Filter>
+    </ClCompile>
+    <ClCompile Include="game\System\RenderSystem.cpp">
+      <Filter>game\system</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -162,6 +201,42 @@
     </ClInclude>
     <ClInclude Include="include\libs\tigr.h">
       <Filter>include\libs</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ECS\Entity.h">
+      <Filter>include\ecs</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ECS\Component.h">
+      <Filter>include\ecs</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ECS\System.h">
+      <Filter>include\ecs</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ECS\Coordinator.h">
+      <Filter>include\ecs</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\ENGINE.h">
+      <Filter>src\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\Manager\TimerManager.h">
+      <Filter>src\engine\manager</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\Manager\InputManager.h">
+      <Filter>src\engine\manager</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\Manager\SceneManager.h">
+      <Filter>src\engine\manager</Filter>
+    </ClInclude>
+    <ClInclude Include="game\System\CollisionSystem.h">
+      <Filter>game\system</Filter>
+    </ClInclude>
+    <ClInclude Include="game\System\EnemySystem.h">
+      <Filter>game\system</Filter>
+    </ClInclude>
+    <ClInclude Include="game\System\PlayerSystem.h">
+      <Filter>game\system</Filter>
+    </ClInclude>
+    <ClInclude Include="game\System\RenderSystem.h">
+      <Filter>game\system</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

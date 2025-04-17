@@ -129,9 +129,22 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ARQU_PracticaFinal.cpp" />
+    <ClCompile Include="game\main.cpp" />
+    <ClCompile Include="game\System\CollisionSystem.cpp" />
+    <ClCompile Include="game\System\EnemySystem.cpp" />
+    <ClCompile Include="game\System\PlayerSystem.cpp" />
+    <ClCompile Include="game\System\RenderSystem.cpp" />
+    <ClCompile Include="include\ECS\Component.cpp" />
+    <ClCompile Include="include\ECS\Coordinator.cpp" />
+    <ClCompile Include="include\ECS\Entity.cpp" />
+    <ClCompile Include="include\ECS\System.cpp" />
     <ClCompile Include="include\libs\tigr.c" />
     <ClCompile Include="include\utils\Utilities.cpp" />
     <ClCompile Include="include\utils\Vec2.cpp" />
+    <ClCompile Include="src\Engine\ENGINE.cpp" />
+    <ClCompile Include="src\Engine\Manager\InputManager.cpp" />
+    <ClCompile Include="src\Engine\Manager\SceneManager.cpp" />
+    <ClCompile Include="src\Engine\Manager\TimerManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="assets\characters\knight.png" />
@@ -162,12 +175,24 @@
     <Image Include="assets\ui\timer.png" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="game\System\CollisionSystem.h" />
+    <ClInclude Include="game\System\EnemySystem.h" />
+    <ClInclude Include="game\System\PlayerSystem.h" />
+    <ClInclude Include="game\System\RenderSystem.h" />
+    <ClInclude Include="include\ECS\Component.h" />
+    <ClInclude Include="include\ECS\Coordinator.h" />
+    <ClInclude Include="include\ECS\Entity.h" />
+    <ClInclude Include="include\ECS\System.h" />
     <ClInclude Include="include\libs\ecs.hh" />
     <ClInclude Include="include\libs\pugiconfig.hpp" />
     <ClInclude Include="include\libs\pugixml.hpp" />
     <ClInclude Include="include\libs\tigr.h" />
     <ClInclude Include="include\utils\Utilities.h" />
     <ClInclude Include="include\utils\Vec2.h" />
+    <ClInclude Include="src\Engine\ENGINE.h" />
+    <ClInclude Include="src\Engine\Manager\InputManager.h" />
+    <ClInclude Include="src\Engine\Manager\SceneManager.h" />
+    <ClInclude Include="src\Engine\Manager\TimerManager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
