@@ -1,20 +1,62 @@
-// ARQU_PracticaFinal.cpp : Questo file contiene la funzione 'main', in cui inizia e termina l'esecuzione del programma.
-//
+/*********************************************************
+* This is used only to setup the engine and call the game's main(init)
+**********************************************************/
 
 #include <iostream>
 
+#include "Engine/ENGINE.h"
+
+#include "utils/Utilities.h"
+
+/**
+ * @brief The entry point of the application.
+   This will setup the engine and load the used files
+ * @return An int representing the exit status of the application.
+   -1 if an error occurred, 0 otherwise
+ */
 int main()
 {
-    std::cout << "Hello World!\n";
+    std::cout << "Engine initialization!\n";
+
+    // Engine initialization
+    ENGINE engine;
+
+    // we set the parameters of the engine's window
+    std::string title = "Ya llegaron las pipsas";
+    engine.setWindowTitle(title);
+    int width = 200;
+    int height = 200;
+    engine.setWindowSize(width, height);
+
+
+    // we initialize the engine and check if the process was successfull
+    if (!engine.Init())
+    {
+      // if unable to initialize the engine, exit with a -1
+      return -1;
+    }
+
+
+    // we load the assets to use here
+
+    // this is the main loop of the engine
+    while (engine.IsRunning())
+    {
+      // we obtain the delta time
+      static double then = 0;
+      double now = utils::time_ss();
+      float deltaTime = now - then;
+      then = now;
+
+      engine.Clear();
+
+      engine.Update();
+    }
+
+    // after exiting the main loop we close the engine
+    engine.Quit();
+
+    return 0;
 }
 
-// Per eseguire il programma: CTRL+F5 oppure Debug > Avvia senza eseguire debug
-// Per eseguire il debug del programma: F5 oppure Debug > Avvia debug
-
-// Suggerimenti per iniziare: 
-//   1. Usare la finestra Esplora soluzioni per aggiungere/gestire i file
-//   2. Usare la finestra Team Explorer per connettersi al controllo del codice sorgente
-//   3. Usare la finestra di output per visualizzare l'output di compilazione e altri messaggi
-//   4. Usare la finestra Elenco errori per visualizzare gli errori
-//   5. Passare a Progetto > Aggiungi nuovo elemento per creare nuovi file di codice oppure a Progetto > Aggiungi elemento esistente per aggiungere file di codice esistenti al progetto
-//   6. Per aprire di nuovo questo progetto in futuro, passare a File > Apri > Progetto e selezionare il file con estensione sln
+//EOF
