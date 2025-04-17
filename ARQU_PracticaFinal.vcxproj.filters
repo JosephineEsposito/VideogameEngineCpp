@@ -13,10 +13,155 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="saves">
+      <UniqueIdentifier>{da344bcd-d40d-436c-b612-4867bfdd0db0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include">
+      <UniqueIdentifier>{8a0bc30f-f35e-40af-9750-035b70232679}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game">
+      <UniqueIdentifier>{9bdbe6db-9913-47e2-828a-fd59e104b663}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{db402d2c-51cb-4739-896f-7284d0982c25}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="assets">
+      <UniqueIdentifier>{fcc38cb9-5be3-4674-a22d-6d58d855aa41}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="assets\ui">
+      <UniqueIdentifier>{352d7739-e4ce-44c9-8ea8-416d7df7e259}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="assets\characters">
+      <UniqueIdentifier>{835bbf90-51f8-4be4-9ee9-bcfed72f0584}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="assets\enemies">
+      <UniqueIdentifier>{0bb1a896-7bf0-49c9-9a4e-c4fb9b696fad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="assets\environment">
+      <UniqueIdentifier>{46e786b4-0851-4c39-be94-cbe937bed693}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="assets\tiles">
+      <UniqueIdentifier>{b1535a22-19eb-428b-946d-c34897b5afba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\libs">
+      <UniqueIdentifier>{94abbdf9-d8f3-4504-bb0d-4591f825d06c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\utils">
+      <UniqueIdentifier>{3ea0f77d-488f-43a8-af2a-8ff33d218443}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ARQU_PracticaFinal.cpp">
       <Filter>File di origine</Filter>
     </ClCompile>
+    <ClCompile Include="include\utils\Utilities.cpp">
+      <Filter>include\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="include\utils\Vec2.cpp">
+      <Filter>include\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="include\libs\tigr.c">
+      <Filter>include\libs</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="assets\ui\keyboard_arrows_horizontal.png">
+      <Filter>assets\ui</Filter>
+    </Image>
+    <Image Include="assets\ui\keyboard_space.png">
+      <Filter>assets\ui</Filter>
+    </Image>
+    <Image Include="assets\ui\tile_0154.png">
+      <Filter>assets\ui</Filter>
+    </Image>
+    <Image Include="assets\ui\timer.png">
+      <Filter>assets\ui</Filter>
+    </Image>
+    <Image Include="assets\characters\knight.png">
+      <Filter>assets\characters</Filter>
+    </Image>
+    <Image Include="assets\enemies\crab.png">
+      <Filter>assets\enemies</Filter>
+    </Image>
+    <Image Include="assets\enemies\cyclops.png">
+      <Filter>assets\enemies</Filter>
+    </Image>
+    <Image Include="assets\enemies\ghost_01.png">
+      <Filter>assets\enemies</Filter>
+    </Image>
+    <Image Include="assets\enemies\ghost_02.png">
+      <Filter>assets\enemies</Filter>
+    </Image>
+    <Image Include="assets\enemies\mage_01.png">
+      <Filter>assets\enemies</Filter>
+    </Image>
+    <Image Include="assets\enemies\mage_02.png">
+      <Filter>assets\enemies</Filter>
+    </Image>
+    <Image Include="assets\enemies\rat_01.png">
+      <Filter>assets\enemies</Filter>
+    </Image>
+    <Image Include="assets\enemies\rat_02.png">
+      <Filter>assets\enemies</Filter>
+    </Image>
+    <Image Include="assets\environment\barrel.png">
+      <Filter>assets\environment</Filter>
+    </Image>
+    <Image Include="assets\environment\box.png">
+      <Filter>assets\environment</Filter>
+    </Image>
+    <Image Include="assets\environment\grave.png">
+      <Filter>assets\environment</Filter>
+    </Image>
+    <Image Include="assets\environment\table.png">
+      <Filter>assets\environment</Filter>
+    </Image>
+    <Image Include="assets\tiles\left_corner_high_ground.png">
+      <Filter>assets\tiles</Filter>
+    </Image>
+    <Image Include="assets\tiles\left_corner_low_ground.png">
+      <Filter>assets\tiles</Filter>
+    </Image>
+    <Image Include="assets\tiles\middle_center_left.png">
+      <Filter>assets\tiles</Filter>
+    </Image>
+    <Image Include="assets\tiles\middle_center_right_ground.png">
+      <Filter>assets\tiles</Filter>
+    </Image>
+    <Image Include="assets\tiles\middle_ground.png">
+      <Filter>assets\tiles</Filter>
+    </Image>
+    <Image Include="assets\tiles\middle_high_ground.png">
+      <Filter>assets\tiles</Filter>
+    </Image>
+    <Image Include="assets\tiles\middle_low_ground.png">
+      <Filter>assets\tiles</Filter>
+    </Image>
+    <Image Include="assets\tiles\right_corner_high_ground.png">
+      <Filter>assets\tiles</Filter>
+    </Image>
+    <Image Include="assets\tiles\right_corner_low_ground.png">
+      <Filter>assets\tiles</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\utils\Utilities.h">
+      <Filter>include\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="include\utils\Vec2.h">
+      <Filter>include\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="include\libs\ecs.hh">
+      <Filter>include\libs</Filter>
+    </ClInclude>
+    <ClInclude Include="include\libs\pugiconfig.hpp">
+      <Filter>include\libs</Filter>
+    </ClInclude>
+    <ClInclude Include="include\libs\pugixml.hpp">
+      <Filter>include\libs</Filter>
+    </ClInclude>
+    <ClInclude Include="include\libs\tigr.h">
+      <Filter>include\libs</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

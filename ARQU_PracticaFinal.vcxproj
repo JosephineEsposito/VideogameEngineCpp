@@ -104,6 +104,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(ProjectDir)assets;$(ProjectDir)game;$(ProjectDir)src;$(ProjectDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -128,6 +129,45 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ARQU_PracticaFinal.cpp" />
+    <ClCompile Include="include\libs\tigr.c" />
+    <ClCompile Include="include\utils\Utilities.cpp" />
+    <ClCompile Include="include\utils\Vec2.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="assets\characters\knight.png" />
+    <Image Include="assets\enemies\crab.png" />
+    <Image Include="assets\enemies\cyclops.png" />
+    <Image Include="assets\enemies\ghost_01.png" />
+    <Image Include="assets\enemies\ghost_02.png" />
+    <Image Include="assets\enemies\mage_01.png" />
+    <Image Include="assets\enemies\mage_02.png" />
+    <Image Include="assets\enemies\rat_01.png" />
+    <Image Include="assets\enemies\rat_02.png" />
+    <Image Include="assets\environment\barrel.png" />
+    <Image Include="assets\environment\box.png" />
+    <Image Include="assets\environment\grave.png" />
+    <Image Include="assets\environment\table.png" />
+    <Image Include="assets\tiles\left_corner_high_ground.png" />
+    <Image Include="assets\tiles\left_corner_low_ground.png" />
+    <Image Include="assets\tiles\middle_center_left.png" />
+    <Image Include="assets\tiles\middle_center_right_ground.png" />
+    <Image Include="assets\tiles\middle_ground.png" />
+    <Image Include="assets\tiles\middle_high_ground.png" />
+    <Image Include="assets\tiles\middle_low_ground.png" />
+    <Image Include="assets\tiles\right_corner_high_ground.png" />
+    <Image Include="assets\tiles\right_corner_low_ground.png" />
+    <Image Include="assets\ui\keyboard_arrows_horizontal.png" />
+    <Image Include="assets\ui\keyboard_space.png" />
+    <Image Include="assets\ui\tile_0154.png" />
+    <Image Include="assets\ui\timer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\libs\ecs.hh" />
+    <ClInclude Include="include\libs\pugiconfig.hpp" />
+    <ClInclude Include="include\libs\pugixml.hpp" />
+    <ClInclude Include="include\libs\tigr.h" />
+    <ClInclude Include="include\utils\Utilities.h" />
+    <ClInclude Include="include\utils\Vec2.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
