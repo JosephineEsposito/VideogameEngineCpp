@@ -7,8 +7,9 @@
 #include <string>
 #include <sstream>
 
+#include "utils/Color.h"
+
 class Tigr;
-class Color;
 class Vec2;
 
 
@@ -93,7 +94,7 @@ public:
    * @param _text The text to print on the screen
    * @param _color The color value of the text
    */
-  void Print(const char* _text, Color& _color);
+  void Print(const char* _text, Color* _color);
   
   /**
    * @brief Prints a text on the engine's window
@@ -101,24 +102,9 @@ public:
    * @param _pos The vector 2 position for the placement of the text
    * @param _color The color value of the text
    */
-  void Print(std::string& _text, Vec2& _pos, Color& _color);
+  void Print(std::string _text, Vec2* _pos, Color* _color);
 #pragma endregion
 
-#pragma region | Templates
-  /**
-   * @brief A method to convert any variable to string
-   * @tparam T The template variable to convert to string
-   * @param _t The variable to convert to string
-   * @return The variable converted to string
-   */
-  template<typename T>
-  std::string toString(const T& _t)
-  {
-    std::stringstream ss;
-    ss << _t;
-    return ss.str();
-  }
-#pragma endregion
 
 #pragma region | Getters
   /**
@@ -147,6 +133,12 @@ public:
    * @param _title A string representing the title of the screen
    */
   void setWindowTitle(std::string& _title);
+
+  /**
+   * @brief To set the bakcground of the engine's window
+   * @param _color 
+   */
+  void setBackgroundColor(Color& _color);
 #pragma endregion
 
 
@@ -182,6 +174,11 @@ private:
    * @brief A pointer to the engine's window
    */
   Tigr* m_pScreen;
+
+  /**
+   * @brief The background color of the engine
+   */
+  Color m_BackgroundColor;
 
 #pragma endregion
 

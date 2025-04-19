@@ -11,6 +11,12 @@
 class InputManager
 {
 public:
+  InputManager() {};
+  InputManager(const InputManager&) = delete;
+  InputManager& operator=(const InputManager) = delete;
+
+  static InputManager& GetInstance();
+
   void Update();
 
 

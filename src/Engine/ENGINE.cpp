@@ -19,6 +19,8 @@ ENGINE::ENGINE()
   m_pScreen = nullptr;
 
   m_cTitle = "Init";
+
+  m_BackgroundColor = Color();
   
   m_iScreenWidth = 60;
   m_iScreenHeight = 60;
@@ -39,6 +41,8 @@ ENGINE::~ENGINE()
 
 bool ENGINE::Init()
 {
+  m_BackgroundColor.setColor(0xf2, 0xf2, 0xe9);
+
   // we create a window with TiGR
   m_pScreen = tigrWindow(m_iScreenWidth, m_iScreenHeight, m_cTitle, 0);
 
@@ -72,7 +76,7 @@ bool ENGINE::Quit()
 void ENGINE::Clear()
 {
   // clearing the screen
-  tigrClear(m_pScreen, tigrRGB(0xf2, 0xf2, 0xe9));
+  tigrClear(m_pScreen, m_BackgroundColor.getColor());
 }
 
 
@@ -123,14 +127,14 @@ void ENGINE::Log(std::string& _text)
 }
 
 
-void ENGINE::Print(const char* _text, Color& _color)
+void ENGINE::Print(const char* _text, Color* _color)
 {
-  tigrPrint(m_pScreen, tfont, 0, 0, _color.getColor(), _text);
+  tigrPrint(m_pScreen, tfont, 0, 0, _color->getColor(), _text);
 }
 
-void ENGINE::Print(std::string& _text, Vec2& _pos, Color& _color)
+void ENGINE::Print(std::string _text, Vec2* _pos, Color* _color)
 {
-  tigrPrint(m_pScreen, tfont, _pos.x, _pos.y, _color.getColor(), _text.c_str());
+  tigrPrint(m_pScreen, tfont, _pos->x, _pos->y, _color->getColor(), _text.c_str());
 }
 
 #pragma endregion
@@ -174,6 +178,10 @@ void ENGINE::setWindowTitle(std::string& _title)
   m_cTitle = _title.c_str();
 }
 
+void ENGINE::setBackgroundColor(Color& _color)
+{
+  m_BackgroundColor = _color;
+}
 #pragma endregion
 
 //EOF

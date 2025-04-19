@@ -18,6 +18,20 @@ namespace utils
   // Method to write into a file
   void write_file(std::string data, std::string fileName);
 
+  /**
+   * @brief A method to convert any variable to string
+   * @tparam T The template variable to convert to string
+   * @param _t The variable to convert to string
+   * @return The variable converted to string
+   */
+  template<typename T>
+  std::string toString(const T& _t)
+  {
+    std::stringstream ss;
+    ss << _t;
+    return ss.str();
+  }
+
 }
 
 //EOF

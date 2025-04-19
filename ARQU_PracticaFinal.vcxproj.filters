@@ -93,9 +93,6 @@
     <ClCompile Include="src\Engine\Manager\SceneManager.cpp">
       <Filter>src\engine\manager</Filter>
     </ClCompile>
-    <ClCompile Include="game\main.cpp">
-      <Filter>game</Filter>
-    </ClCompile>
     <ClCompile Include="game\System\CollisionSystem.cpp">
       <Filter>game\system</Filter>
     </ClCompile>
@@ -121,6 +118,12 @@
       <Filter>include\utils</Filter>
     </ClCompile>
     <ClCompile Include="game\Scenes\GameScene.cpp">
+      <Filter>game\scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="game\GameDemo.cpp">
+      <Filter>game</Filter>
+    </ClCompile>
+    <ClCompile Include="game\Scenes\MenuScene.cpp">
       <Filter>game\scenes</Filter>
     </ClCompile>
   </ItemGroup>
@@ -275,6 +278,12 @@
       <Filter>include\utils</Filter>
     </ClInclude>
     <ClInclude Include="game\Scenes\GameScene.h">
+      <Filter>game\scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="game\GameDemo.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="game\Scenes\MenuScene.h">
       <Filter>game\scenes</Filter>
     </ClInclude>
   </ItemGroup>

@@ -12,6 +12,12 @@
 class SceneManager
 {
 public:
+  SceneManager() = default;
+  SceneManager(const SceneManager&) = delete;
+  SceneManager& operator=(const SceneManager) = delete;
+
+  static SceneManager& GetInstance();
+
   void ChangeScene(Scene* _newScene);
 
   void PushScene(Scene* _newScene);
@@ -22,7 +28,10 @@ public:
 
   void Draw();
 
+  SceneState GetCurrentState();
+
 private:
   std::stack<Scene*> m_lScenes;
+  SceneState m_eCurrentState = SceneState::INIT;
 };
 

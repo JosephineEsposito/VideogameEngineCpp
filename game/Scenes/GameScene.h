@@ -6,11 +6,13 @@
 class GameScene : public Scene
 {
 public:
-  GameScene() = default;
+  GameScene();
 
   void Init() override;
   void Update() override;
   void Draw() override;
   void Unload() override;
+
+  SceneState m_eState;
 };
 

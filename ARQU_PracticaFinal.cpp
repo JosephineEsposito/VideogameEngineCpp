@@ -5,8 +5,7 @@
 #include <iostream>
 
 #include "Engine/ENGINE.h"
-
-#include "Engine/Manager/SceneManager.h"
+#include "game/GameDemo.h"
 
 /**
  * @brief The entry point of the application.
@@ -16,32 +15,41 @@
  */
 int main()
 {
-    std::cout << "Engine initialization!\n";
+  // we set the engines properties here
+  puts("[main]\tEngine initialization.");
 
-    // Engine initialization
-    ENGINE engine;
-    // Manager initialization
+  int width = 800;
+  int heigth = 600;
+  std::string title = "Demo";
+
+  ENGINE::GetInstance().setWindowTitle(title);
+  ENGINE::GetInstance().setWindowSize(width, heigth);
+
+  if (!ENGINE::GetInstance().Init())
+  {
+    puts("[main]\tError: Unable to initialize the engine :(");
+    return -1;
+  }
+  
+  // lauching the game here
+  puts("[main]\tLaunching the game.");
+  GameDemo demo;
+  demo.Run();
+
+  puts("[main]\tClosing the Engine.");
+  ENGINE::GetInstance().Quit();
+  return 0;
+}
+
+//EOF
+
+/*
+    // SceneManager initialization
+    std::cout << "SceneManager initialization!\n";
     SceneManager sceneManager;
-
-    // we set the parameters of the engine's window
-    std::string title = "Josephine Esposito";
-    engine.setWindowTitle(title);
-    int width = 600;
-    int height = 400;
-    engine.setWindowSize(width, height);
-
-
-    // we initialize the engine and check if the process was successfull
-    if (!engine.Init())
-    {
-      // if unable to initialize the engine, exit with a -1
-      return -1;
-    }
 
 
     // we load the assets to use here
-
-
 
     // this is the main loop of the engine
     while (engine.IsRunning())
@@ -53,11 +61,4 @@ int main()
 
       engine.EndFrame();
     }
-
-    // after exiting the main loop we close the engine
-    engine.Quit();
-
-    return 0;
-}
-
-//EOF
+*/

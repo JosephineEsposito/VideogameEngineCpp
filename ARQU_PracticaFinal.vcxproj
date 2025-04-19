@@ -129,8 +129,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ARQU_PracticaFinal.cpp" />
-    <ClCompile Include="game\main.cpp" />
+    <ClCompile Include="game\GameDemo.cpp" />
     <ClCompile Include="game\Scenes\GameScene.cpp" />
+    <ClCompile Include="game\Scenes\MenuScene.cpp" />
     <ClCompile Include="game\System\CollisionSystem.cpp" />
     <ClCompile Include="game\System\EnemySystem.cpp" />
     <ClCompile Include="game\System\PlayerSystem.cpp" />
@@ -180,7 +181,9 @@
     <Image Include="assets\ui\timer.png" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="game\GameDemo.h" />
     <ClInclude Include="game\Scenes\GameScene.h" />
+    <ClInclude Include="game\Scenes\MenuScene.h" />
     <ClInclude Include="game\System\CollisionSystem.h" />
     <ClInclude Include="game\System\EnemySystem.h" />
     <ClInclude Include="game\System\PlayerSystem.h" />

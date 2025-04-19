@@ -1,7 +1,14 @@
 #include "InputManager.h"
 
 #include "Engine/ENGINE.h"
+#include "libs/tigr.h"
 
+
+InputManager& InputManager::GetInstance()
+{
+  static InputManager instance;
+  return instance;
+}
 
 void InputManager::Update()
 {
@@ -20,7 +27,7 @@ bool InputManager::IsKeyPressed(int _key)
 
 bool InputManager::IsKeyDown(int _key)
 {
-  return m_lCurrentKeys[_key];
+  return tigrKeyDown(ENGINE::GetInstance().getScreen(), _key);
 }
 
 bool InputManager::IsKeyReleased(int _key)
