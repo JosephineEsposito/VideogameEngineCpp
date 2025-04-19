@@ -5,6 +5,11 @@
 
 #include "libs/tigr.h"
 
+#include "utils/Color.h"
+#include "utils/Vec2.h"
+
+#include "Engine/Manager/TimerManager.h"
+
 
 #pragma region | Constructor and Destructor Methods
 
@@ -12,8 +17,9 @@ ENGINE::ENGINE()
 {
   m_bIsRunning = false;
   m_pScreen = nullptr;
-  m_fDeltaTime = 0.0f;
+
   m_cTitle = "Init";
+  
   m_iScreenWidth = 60;
   m_iScreenHeight = 60;
 }
@@ -21,8 +27,6 @@ ENGINE::ENGINE()
 ENGINE::~ENGINE()
 {
   m_bIsRunning = false;
-
-  m_fDeltaTime = 0.0f;
 
   delete m_pScreen;
   m_pScreen = nullptr;
@@ -73,20 +77,16 @@ void ENGINE::Clear()
 
 
 #pragma region | Main Loop
-
-bool ENGINE::Input()
+void ENGINE::BeginFrame()
 {
-  //@review -> leggi l'input qui
-  return true;
+  TimerManager::GetInstance().StartFrame();
+
+  Clear();
+
+  //@review -> gestisci input qui
 }
 
-void ENGINE::Render()
-{
-  // we draw on the screen
-  tigrClear(m_pScreen, tigrRGB(0xf2, 0xf2, 0xe9));
-}
-
-void ENGINE::Update()
+void ENGINE::EndFrame()
 {
   // we update the engine here
   tigrUpdate(m_pScreen);
@@ -123,14 +123,14 @@ void ENGINE::Log(std::string& _text)
 }
 
 
-void ENGINE::Print(const char* _text, unsigned char _r, unsigned char _g, unsigned char _b)
+void ENGINE::Print(const char* _text, Color& _color)
 {
-  tigrPrint(m_pScreen, tfont, 0, 0, tigrRGB(_r, _g, _b), _text);
+  tigrPrint(m_pScreen, tfont, 0, 0, _color.getColor(), _text);
 }
 
-void ENGINE::Print(std::string& _text, int _x, int _y, unsigned char _r, unsigned char _g, unsigned char _b)
+void ENGINE::Print(std::string& _text, Vec2& _pos, Color& _color)
 {
-  tigrPrint(m_pScreen, tfont, _x, _y, tigrRGB(_r, _g, _b), _text.c_str());
+  tigrPrint(m_pScreen, tfont, _pos.x, _pos.y, _color.getColor(), _text.c_str());
 }
 
 #pragma endregion
@@ -138,30 +138,30 @@ void ENGINE::Print(std::string& _text, int _x, int _y, unsigned char _r, unsigne
 
 #pragma region | Getters
 
-float ENGINE::getDeltaTime() const
-{
-  return m_fDeltaTime;
-}
-
 Tigr* ENGINE::getScreen() const
 {
   return m_pScreen;
 }
 
+int ENGINE::GetWidth() const
+{
+  return m_iScreenWidth;
+}
+
+int ENGINE::GetHeight() const
+{
+  return m_iScreenHeight;
+}
+
+ENGINE& ENGINE::GetInstance()
+{
+  static ENGINE instance;
+  return instance;
+}
 #pragma endregion
 
 
 #pragma region | Setters
-
-void ENGINE::StartTime()
-{
-  m_fDeltaTime = tigrTime();
-}
-
-void ENGINE::setDeltaTime(float& _time)
-{
-  m_fDeltaTime = _time;
-}
 
 void ENGINE::setWindowSize(int& _width, int& _height)
 {

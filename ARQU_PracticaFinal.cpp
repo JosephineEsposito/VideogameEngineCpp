@@ -6,7 +6,7 @@
 
 #include "Engine/ENGINE.h"
 
-#include "utils/Utilities.h"
+#include "Engine/Manager/SceneManager.h"
 
 /**
  * @brief The entry point of the application.
@@ -20,12 +20,14 @@ int main()
 
     // Engine initialization
     ENGINE engine;
+    // Manager initialization
+    SceneManager sceneManager;
 
     // we set the parameters of the engine's window
-    std::string title = "Ya llegaron las pipsas";
+    std::string title = "Josephine Esposito";
     engine.setWindowTitle(title);
-    int width = 200;
-    int height = 200;
+    int width = 600;
+    int height = 400;
     engine.setWindowSize(width, height);
 
 
@@ -39,18 +41,17 @@ int main()
 
     // we load the assets to use here
 
+
+
     // this is the main loop of the engine
     while (engine.IsRunning())
     {
-      // we obtain the delta time
-      static double then = 0;
-      double now = utils::time_ss();
-      float deltaTime = now - then;
-      then = now;
+      engine.BeginFrame();
 
-      engine.Clear();
+      sceneManager.Update();
+      sceneManager.Draw();
 
-      engine.Update();
+      engine.EndFrame();
     }
 
     // after exiting the main loop we close the engine

@@ -10,9 +10,6 @@
     <Filter Include="game">
       <UniqueIdentifier>{9bdbe6db-9913-47e2-828a-fd59e104b663}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src">
-      <UniqueIdentifier>{db402d2c-51cb-4739-896f-7284d0982c25}</UniqueIdentifier>
-    </Filter>
     <Filter Include="assets">
       <UniqueIdentifier>{fcc38cb9-5be3-4674-a22d-6d58d855aa41}</UniqueIdentifier>
     </Filter>
@@ -40,14 +37,23 @@
     <Filter Include="include\ecs">
       <UniqueIdentifier>{3ac0a86a-88d9-4582-ba31-95310ddd4f2e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="game\system">
+      <UniqueIdentifier>{d29b66db-7d85-48e2-a055-d46ae29e6565}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{db402d2c-51cb-4739-896f-7284d0982c25}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\engine">
       <UniqueIdentifier>{a8a2d33b-6ff2-4a13-9808-668dea9ca3f0}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\engine\manager">
       <UniqueIdentifier>{cdf9f758-81c2-4d29-8883-3d036b60be91}</UniqueIdentifier>
     </Filter>
-    <Filter Include="game\system">
-      <UniqueIdentifier>{d29b66db-7d85-48e2-a055-d46ae29e6565}</UniqueIdentifier>
+    <Filter Include="include\enums">
+      <UniqueIdentifier>{d9070cf0-971f-49c3-a7ff-a78eb19af231}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\scenes">
+      <UniqueIdentifier>{0f7fec61-0672-4554-b424-873ebf743eeb}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -101,6 +107,21 @@
     </ClCompile>
     <ClCompile Include="game\System\RenderSystem.cpp">
       <Filter>game\system</Filter>
+    </ClCompile>
+    <ClCompile Include="include\utils\Color.cpp">
+      <Filter>include\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Engine\Manager\SystemManager.cpp">
+      <Filter>src\engine\manager</Filter>
+    </ClCompile>
+    <ClCompile Include="include\utils\Sprite.cpp">
+      <Filter>include\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="include\utils\Scene.cpp">
+      <Filter>include\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="game\Scenes\GameScene.cpp">
+      <Filter>game\scenes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -237,6 +258,24 @@
     </ClInclude>
     <ClInclude Include="game\System\RenderSystem.h">
       <Filter>game\system</Filter>
+    </ClInclude>
+    <ClInclude Include="include\utils\Color.h">
+      <Filter>include\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="include\enums\SceneState.h">
+      <Filter>include\enums</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\Manager\SystemManager.h">
+      <Filter>src\engine\manager</Filter>
+    </ClInclude>
+    <ClInclude Include="include\utils\Sprite.h">
+      <Filter>include\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="include\utils\Scene.h">
+      <Filter>include\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="game\Scenes\GameScene.h">
+      <Filter>game\scenes</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

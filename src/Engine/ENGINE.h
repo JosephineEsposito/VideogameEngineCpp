@@ -3,16 +3,19 @@
 **********************************************************/
 #pragma once
 
-
+#include <memory>
 #include <string>
 #include <sstream>
 
 class Tigr;
+class Color;
+class Vec2;
 
 
 class ENGINE
 {
 public:
+
 #pragma region | Constructor and Destructor Methods
   /**
    * @brief The default constructor of the class
@@ -20,12 +23,21 @@ public:
   ENGINE();
 
   /**
+   * @brief The Copy constructor of the class
+   * @param The engine object
+   */
+  ENGINE(const ENGINE&) = delete;
+
+  /**
    * @brief The default destructor of the class
    */
   ~ENGINE();
 #pragma endregion
 
-  
+#pragma region | Operators
+  ENGINE& operator=(const ENGINE) = delete;
+#pragma endregion
+
 #pragma region | Initialization
   /**
    * @brief Initializes the engine
@@ -40,30 +52,19 @@ public:
   bool Quit();
 #pragma endregion
 
-  /**
-   * @brief Clears the screen of the engine
-   */
-  void Clear();
-
   
 #pragma region | Main Loop
   /**
-   * @brief Reads the inputs events in the engine
-   * @return
+   * @brief Called on the first frame, updates the input and the delta time
    */
-  bool Input();
+  void BeginFrame();
 
-  /**
-   * @brief Renders images and more in the engine
-   */
-  void Render();
-  
   /**
    * @brief Updates the logic of the engine
    */
-  void Update();
-#pragma endregion
+  void EndFrame();
   
+#pragma endregion
   
 #pragma region | Check methods
   /**
@@ -73,40 +74,34 @@ public:
   bool IsRunning();
 #pragma endregion
 
-
 #pragma region | Logs and Prints
   /**
    * @brief Logs the received information
    * @param _text The const char* to log
    */
-  void Log(const char* _text);
+  static void Log(const char* _text);
 
   /**
    * @brief Logs the received information 
    * @param _text The string value to log
    */
-  void Log(std::string& _text);
+  static void Log(std::string& _text);
 
 
   /**
    * @brief Prints a text on the engine's window
    * @param _text The text to print on the screen
-   * @param _r The red RGB color value of the text as hex
-   * @param _g The green RGB color value of the text as hex
-   * @param _b The blue RGB color value of the text as hex
+   * @param _color The color value of the text
    */
-  void Print(const char* _text, unsigned char _r = 0xff, unsigned char _g = 0xff, unsigned char _b = 0xff);
+  void Print(const char* _text, Color& _color);
   
   /**
    * @brief Prints a text on the engine's window
    * @param _text The text to print on the screen
-   * @param _x The x coordinate for the placement of the text
-   * @param _y The y coordinate for the placement of the text
-   * @param _r The red RGB color value of the text as hex
-   * @param _g The green RGB color value of the text as hex
-   * @param _b The blue RGB color value of the text as hex
+   * @param _pos The vector 2 position for the placement of the text
+   * @param _color The color value of the text
    */
-  void Print(std::string& _text, int _x = 0, int _y = 0, unsigned char _r = 0xff, unsigned char _g = 0xff, unsigned char _b = 0xff);
+  void Print(std::string& _text, Vec2& _pos, Color& _color);
 #pragma endregion
 
 #pragma region | Templates
@@ -127,30 +122,19 @@ public:
 
 #pragma region | Getters
   /**
-   * @brief To get the delta time of the engine
-   * @return A float representing the estimated delta time of the engine
-   */
-  float getDeltaTime() const;
-
-  /**
    * @brief To get the window of the engine
    * @return A pointer to the engine's window
    */
   Tigr* getScreen() const;
+
+  int GetWidth() const;
+
+  int GetHeight() const;
+
+  static ENGINE& GetInstance();
 #pragma endregion
 
-  
 #pragma region | Setters
-  /**
-   * @brief To start the delta time of the engine
-   */
-  void StartTime();
-
-  /**
-   * @brief To set the delta time of the engine
-   */
-  void setDeltaTime(float& _time);
-
   /**
    * @brief To set the engine's window's size
    * @param _width 
@@ -167,6 +151,11 @@ public:
 
 
 private:
+  /**
+   * @brief Clears the screen of the engine
+   */
+  void Clear();
+
 
 #pragma region | Variables
   /**
@@ -190,14 +179,11 @@ private:
   int m_iScreenHeight;
 
   /**
-   * @brief The estimated delta time of the engine
-   */
-  float m_fDeltaTime;
-
-  /**
    * @brief A pointer to the engine's window
    */
   Tigr* m_pScreen;
+
 #pragma endregion
+
 };
 

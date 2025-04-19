@@ -5,6 +5,8 @@
 // - write and read to and from a file
 //    + - the file must be of xml format data
 
+#include <string>
+
 namespace utils
 {
   // Returns seconds
