@@ -13,7 +13,7 @@ void CollisionSystem::Update()
   {
     Entity aEntity = *_aEntity;
 
-    if (!Coordinator::GetInstance().HasComponent<Position>(aEntity) || !Coordinator::GetInstance().HasComponent<Sprite>(aEntity))
+    if (!Coordinator::GetInstance().HasComponent<Position>(aEntity) || !Coordinator::GetInstance().HasComponent<SpriteComponent>(aEntity))
     {
       continue;
     }
@@ -22,7 +22,7 @@ void CollisionSystem::Update()
     {
       Entity bEntity = *_bEntity;
 
-      if (!Coordinator::GetInstance().HasComponent<Position>(bEntity) || !Coordinator::GetInstance().HasComponent<Sprite>(bEntity))
+      if (!Coordinator::GetInstance().HasComponent<Position>(bEntity) || !Coordinator::GetInstance().HasComponent<SpriteComponent>(bEntity))
       {
         continue;
       }
@@ -44,15 +44,19 @@ void CollisionSystem::RemoveEntity(Entity _entity)
 bool CollisionSystem::CheckCollision(Entity _aEntity, Entity _bEntity)
 {
   Position& aPos = Coordinator::GetInstance().GetComponent<Position>(_aEntity);
-  Sprite& aSprite = Coordinator::GetInstance().GetComponent<Sprite>(_aEntity);
+  SpriteComponent& aSprite = Coordinator::GetInstance().GetComponent<SpriteComponent>(_aEntity);
 
   Position& bPos = Coordinator::GetInstance().GetComponent<Position>(_bEntity);
-  Sprite& bSprite = Coordinator::GetInstance().GetComponent<Sprite>(_bEntity);
+  SpriteComponent& bSprite = Coordinator::GetInstance().GetComponent<SpriteComponent>(_bEntity);
+
+  // Carica temporaneamente i dati della texture
+  Sprite aTempSprite(aSprite.textureName.c_str());
+  Sprite bTempSprite(bSprite.textureName.c_str());
 
   return (
-    aPos.pos.x < bPos.pos.x + bSprite.texture->w &&
-    aPos.pos.x + aSprite.texture->w > bPos.pos.x &&
-    aPos.pos.y < bPos.pos.y + bSprite.texture->h &&
-    aPos.pos.y + aSprite.texture->h > bPos.pos.y
+    aPos.pos.x < bPos.pos.x + bTempSprite.texture->w &&
+    aPos.pos.x + aTempSprite.texture->w > bPos.pos.x &&
+    aPos.pos.y < bPos.pos.y + bTempSprite.texture->h &&
+    aPos.pos.y + aTempSprite.texture->h > bPos.pos.y
     );
 }

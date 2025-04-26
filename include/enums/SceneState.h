@@ -1,6 +1,6 @@
 #pragma once
 
-enum class SceneState
+enum class SceneState : int
 {
   INIT,
   MENU,

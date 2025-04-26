@@ -22,7 +22,7 @@ void InputManager::Update()
 
 bool InputManager::IsKeyPressed(int _key)
 {
-  return m_lCurrentKeys[_key] && !m_lPreviousKeys[_key];
+  return tigrKeyHeld(ENGINE::GetInstance().getScreen(), _key);
 }
 
 bool InputManager::IsKeyDown(int _key)

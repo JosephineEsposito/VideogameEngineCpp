@@ -130,12 +130,15 @@
   <ItemGroup>
     <ClCompile Include="ARQU_PracticaFinal.cpp" />
     <ClCompile Include="game\GameDemo.cpp" />
+    <ClCompile Include="game\Scenes\GameOverScene.cpp" />
     <ClCompile Include="game\Scenes\GameScene.cpp" />
     <ClCompile Include="game\Scenes\MenuScene.cpp" />
     <ClCompile Include="game\System\CollisionSystem.cpp" />
     <ClCompile Include="game\System\EnemySystem.cpp" />
+    <ClCompile Include="game\System\MovementSystem.cpp" />
     <ClCompile Include="game\System\PlayerSystem.cpp" />
     <ClCompile Include="game\System\RenderSystem.cpp" />
+    <ClCompile Include="game\UI\HUD.cpp" />
     <ClCompile Include="include\ECS\Component.cpp" />
     <ClCompile Include="include\ECS\Coordinator.cpp" />
     <ClCompile Include="include\ECS\Entity.cpp" />
@@ -144,6 +147,7 @@
     <ClCompile Include="include\utils\Color.cpp" />
     <ClCompile Include="include\utils\Scene.cpp" />
     <ClCompile Include="include\utils\Sprite.cpp" />
+    <ClCompile Include="include\utils\Timer.cpp" />
     <ClCompile Include="include\utils\Utilities.cpp" />
     <ClCompile Include="include\utils\Vec2.cpp" />
     <ClCompile Include="src\Engine\ENGINE.cpp" />
@@ -153,7 +157,7 @@
     <ClCompile Include="src\Engine\Manager\TimerManager.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="assets\characters\knight.png" />
+    <Image Include="assets\characters\chara.png" />
     <Image Include="assets\enemies\crab.png" />
     <Image Include="assets\enemies\cyclops.png" />
     <Image Include="assets\enemies\ghost_01.png" />
@@ -166,15 +170,7 @@
     <Image Include="assets\environment\box.png" />
     <Image Include="assets\environment\grave.png" />
     <Image Include="assets\environment\table.png" />
-    <Image Include="assets\tiles\left_corner_high_ground.png" />
-    <Image Include="assets\tiles\left_corner_low_ground.png" />
-    <Image Include="assets\tiles\middle_center_left.png" />
-    <Image Include="assets\tiles\middle_center_right_ground.png" />
-    <Image Include="assets\tiles\middle_ground.png" />
-    <Image Include="assets\tiles\middle_high_ground.png" />
-    <Image Include="assets\tiles\middle_low_ground.png" />
-    <Image Include="assets\tiles\right_corner_high_ground.png" />
-    <Image Include="assets\tiles\right_corner_low_ground.png" />
+    <Image Include="assets\tiles\map.png" />
     <Image Include="assets\ui\keyboard_arrows_horizontal.png" />
     <Image Include="assets\ui\keyboard_space.png" />
     <Image Include="assets\ui\tile_0154.png" />
@@ -182,12 +178,15 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="game\GameDemo.h" />
+    <ClInclude Include="game\Scenes\GameOverScene.h" />
     <ClInclude Include="game\Scenes\GameScene.h" />
     <ClInclude Include="game\Scenes\MenuScene.h" />
     <ClInclude Include="game\System\CollisionSystem.h" />
     <ClInclude Include="game\System\EnemySystem.h" />
+    <ClInclude Include="game\System\MovementSystem.h" />
     <ClInclude Include="game\System\PlayerSystem.h" />
     <ClInclude Include="game\System\RenderSystem.h" />
+    <ClInclude Include="game\UI\HUD.h" />
     <ClInclude Include="include\ECS\Component.h" />
     <ClInclude Include="include\ECS\Coordinator.h" />
     <ClInclude Include="include\ECS\Entity.h" />
@@ -200,6 +199,7 @@
     <ClInclude Include="include\utils\Color.h" />
     <ClInclude Include="include\utils\Scene.h" />
     <ClInclude Include="include\utils\Sprite.h" />
+    <ClInclude Include="include\utils\Timer.h" />
     <ClInclude Include="include\utils\Utilities.h" />
     <ClInclude Include="include\utils\Vec2.h" />
     <ClInclude Include="src\Engine\ENGINE.h" />

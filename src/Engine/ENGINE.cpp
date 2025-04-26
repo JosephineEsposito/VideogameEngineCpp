@@ -121,9 +121,9 @@ void ENGINE::Log(const char* _text)
   puts(_text);
 }
 
-void ENGINE::Log(std::string& _text)
+void ENGINE::Log(const char* _class, const char* _method, const char* _message)
 {
-  puts(_text.c_str());
+  std::cout << "[" << _class << "|" << _method << "]\t\t" << _message << "\n";
 }
 
 

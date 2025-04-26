@@ -16,10 +16,10 @@
 int main()
 {
   // we set the engines properties here
-  puts("[main]\tEngine initialization.");
+  puts("[Program|main]\t\tEngine initialization.");
 
   int width = 800;
-  int heigth = 600;
+  int heigth = 800;
   std::string title = "Demo";
 
   ENGINE::GetInstance().setWindowTitle(title);
@@ -27,38 +27,18 @@ int main()
 
   if (!ENGINE::GetInstance().Init())
   {
-    puts("[main]\tError: Unable to initialize the engine :(");
+    ENGINE::Log("Program", "main", "Error: Unable to initialize the engine.");
     return -1;
   }
   
   // lauching the game here
-  puts("[main]\tLaunching the game.");
+  ENGINE::Log("Program", "main", "Launching the game.");
   GameDemo demo;
   demo.Run();
 
-  puts("[main]\tClosing the Engine.");
+  ENGINE::Log("Program", "main", "Closing the Engine.");
   ENGINE::GetInstance().Quit();
   return 0;
 }
 
 //EOF
-
-/*
-    // SceneManager initialization
-    std::cout << "SceneManager initialization!\n";
-    SceneManager sceneManager;
-
-
-    // we load the assets to use here
-
-    // this is the main loop of the engine
-    while (engine.IsRunning())
-    {
-      engine.BeginFrame();
-
-      sceneManager.Update();
-      sceneManager.Draw();
-
-      engine.EndFrame();
-    }
-*/

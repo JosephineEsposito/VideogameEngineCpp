@@ -2,32 +2,34 @@
 
 #include "Engine/ENGINE.h"
 
+#include "Engine/Manager/InputManager.h"
+#include "Engine/Manager/SceneManager.h"
+
 #include "utils/Utilities.h"
 #include "utils/Vec2.h"
 
-#include <iostream>
-
 MenuScene::MenuScene() : Scene(SceneState::MENU)
 {
+  ENGINE::Log("MenuScene", "Constructor", "Constructor called.");
   m_sTitle = "";
   m_sText = "";
-  background = new Color();
-  textColor = new Color();
+  background = Color();
+  textColor = Color();
   // we set the scene state
   m_eState = SceneState::MENU;
-  std::cout << "[MenuScene]\tConstructor, m_eState: " << (int)m_eState << "\n";
 }
 
 void MenuScene::Init()
 {
+  ENGINE::Log("MenuScene", "Init", "Initializing the object.");
   // we load the assets here
 
   // we set the color of the background
-  background->setColor(0x69, 0x85, 0x45);
-  ENGINE::GetInstance().setBackgroundColor(*background);
+  background.setColor(0x43, 0x52, 0x21);
+  ENGINE::GetInstance().setBackgroundColor(background);
 
   // we set the color of the text
-  textColor->setColor(0xe0, 0xdc, 0xc8);
+  textColor.setColor(0xe0, 0xdc, 0xc8);
 
   // we set the title content
   m_sTitle = "DEMO GAME";
@@ -39,8 +41,12 @@ void MenuScene::Init()
 void MenuScene::Update()
 {
   // we update the scene logic
+  if (InputManager::GetInstance().IsKeyDown(TK_SPACE))
+  {
+    ENGINE::Log("MenuScene", "Update", "Pressed Space - Switching scene.");
 
-  // we read the input
+    SceneManager::GetInstance().ChangeScene(SceneState::PLAYING);
+  }
 }
 
 void MenuScene::Draw()
@@ -49,12 +55,12 @@ void MenuScene::Draw()
   ENGINE& engine = ENGINE::GetInstance();
 
   // we draw the text onto the screen
-  Vec2* titlePos = new Vec2(360, 200);
-  engine.Print(utils::toString(m_sTitle), titlePos, textColor);
+  Vec2* titlePos = new Vec2(360, 240);
+  engine.Print(utils::toString(m_sTitle), titlePos, &textColor);
 
   // we draw the subtitle onto the screen
-  Vec2* subtitlePos = new Vec2(314, 220);
-  engine.Print(utils::toString(m_sText), subtitlePos, textColor);
+  Vec2* subtitlePos = new Vec2(314, 260);
+  engine.Print(utils::toString(m_sText), subtitlePos, &textColor);
 
   delete titlePos;
   delete subtitlePos;
@@ -63,7 +69,5 @@ void MenuScene::Draw()
 void MenuScene::Unload()
 {
   // we clean the memory
-  puts("[MenuScene]\tUnloading the scene.");
-  delete background;
-  delete textColor;
+  ENGINE::Log("MenuScene", "Unload", "Unloading the object.");
 }

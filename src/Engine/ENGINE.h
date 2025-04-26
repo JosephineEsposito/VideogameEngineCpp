@@ -86,7 +86,7 @@ public:
    * @brief Logs the received information 
    * @param _text The string value to log
    */
-  static void Log(std::string& _text);
+  static void Log(const char* _class, const char* _method, const char* _message);
 
 
   /**

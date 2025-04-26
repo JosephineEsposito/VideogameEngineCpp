@@ -5,6 +5,7 @@
 
 #include <memory>
 #include <stack>
+#include <unordered_map>
 
 #include "utils/Scene.h"
 #include "enums/SceneState.h"
@@ -18,11 +19,9 @@ public:
 
   static SceneManager& GetInstance();
 
-  void ChangeScene(Scene* _newScene);
-
-  void PushScene(Scene* _newScene);
-
-  void PopScene();
+  void RegisterScene(SceneState _state, Scene* _scene);
+  
+  void ChangeScene(SceneState _state);
 
   void Update();
 
@@ -31,7 +30,8 @@ public:
   SceneState GetCurrentState();
 
 private:
-  std::stack<Scene*> m_lScenes;
+  std::unordered_map<SceneState, Scene*> m_mScenes;
+  Scene* m_pCurrentScene;
   SceneState m_eCurrentState = SceneState::INIT;
 };
 

@@ -1,5 +1,7 @@
 #include "SceneManager.h"
 
+#include "Engine/ENGINE.h"
+
 #include <iostream>
 
 SceneManager& SceneManager::GetInstance()
@@ -8,71 +10,53 @@ SceneManager& SceneManager::GetInstance()
   return instance;
 }
 
-void SceneManager::ChangeScene(Scene* _newScene)
-{
-  std::cout << "[SceneManager] Trying to change scene" << std::endl;
-  std::cout << "[SceneManager] Current state: " << (int)m_eCurrentState << std::endl;
-  std::cout << "[SceneManager] New scene state: " << (int)_newScene->m_eState << std::endl;
 
-  if (_newScene->m_eState == m_eCurrentState)
+void SceneManager::RegisterScene(SceneState _state, Scene* _scene)
+{
+  m_mScenes[_state] = _scene;
+}
+
+void SceneManager::ChangeScene(SceneState _state)
+{
+  ENGINE::Log("SceneManager", "ChangeScene", "Changing the scene.");
+
+  if (_state == m_eCurrentState)
   {
-    puts("[SceneManager]\tCannot change to the same scene.");
+    ENGINE::Log("SceneManager", "ChangeScene", "Error: cannot change to the same scene.");
     return;
   }
 
-  if (!m_lScenes.empty())
+  auto pair = m_mScenes.find(_state);
+  if (pair == m_mScenes.end())
   {
-    m_lScenes.top()->Unload();
-    m_lScenes.pop();
+    ENGINE::Log("SceneManager", "ChangeScene", "Error: Requested scene not found.");
+    return;
   }
 
-  m_lScenes.push(_newScene);
-  m_lScenes.top()->Init();
-  m_eCurrentState = m_lScenes.top()->m_eState;
+  if (m_pCurrentScene)
+  {
+    m_pCurrentScene->Unload();
+  }
 
-  std::cout << "[SceneManager] New current state: " << (int)m_eCurrentState << std::endl;
+  m_pCurrentScene = pair->second;
+  m_pCurrentScene->Init();
+  m_eCurrentState = _state;
 }
 
-void SceneManager::PushScene(Scene* _newScene)
-{
-  if (!m_lScenes.empty())
-  {
-    m_lScenes.top()->Unload();
-  }
-
-  m_lScenes.push(_newScene);
-  m_lScenes.top()->Init();
-  m_eCurrentState = m_lScenes.top()->m_eState;
-}
-
-void SceneManager::PopScene()
-{
-  if (!m_lScenes.empty())
-  {
-    m_lScenes.top()->Unload();
-    m_lScenes.pop();
-  }
-
-  if (!m_lScenes.empty())
-  {
-    m_lScenes.top()->Init();
-    m_eCurrentState = m_lScenes.top()->m_eState;
-  }
-}
 
 void SceneManager::Update()
 {
-  if (!m_lScenes.empty())
+  if (m_pCurrentScene)
   {
-    m_lScenes.top()->Update();
+    m_pCurrentScene->Update();
   }
 }
 
 void SceneManager::Draw()
 {
-  if (!m_lScenes.empty())
+  if (m_pCurrentScene)
   {
-    m_lScenes.top()->Draw();
+    m_pCurrentScene->Draw();
   }
 }
 

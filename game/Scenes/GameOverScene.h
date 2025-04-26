@@ -5,10 +5,10 @@
 
 
 
-class MenuScene : public Scene
+class GameOverScene : public Scene
 {
 public:
-  MenuScene();
+  GameOverScene();
 
   void Init() override;
 
@@ -24,9 +24,8 @@ private:
   Color background;
   Color textColor;
 
-  //@review rename to m_c instead of m_s
-  const char* m_sTitle;
-  const char* m_sText;
-
+  const char* m_cTitle;
+  const char* m_cSubtitle;
+  const char* m_cScore;
 };
 

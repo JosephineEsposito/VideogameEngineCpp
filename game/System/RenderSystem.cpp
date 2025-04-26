@@ -5,10 +5,10 @@ void RenderSystem::Draw()
 {
   for (Entity entity : m_lEntities)
   {
-    if (Coordinator::GetInstance().HasComponent<Sprite>(entity))
+    if (Coordinator::GetInstance().HasComponent<SpriteComponent>(entity))
     {
-      Sprite& sprite = Coordinator::GetInstance().GetComponent<Sprite>(entity);
-      sprite.Draw(ENGINE::GetInstance().getScreen());
+      SpriteComponent& sprite = Coordinator::GetInstance().GetComponent<SpriteComponent>(entity);
+      //sprite.sprite.Draw(ENGINE::GetInstance().getScreen());
     }
   }
 }

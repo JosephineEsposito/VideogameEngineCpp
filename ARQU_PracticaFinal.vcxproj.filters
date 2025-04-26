@@ -55,6 +55,12 @@
     <Filter Include="game\scenes">
       <UniqueIdentifier>{0f7fec61-0672-4554-b424-873ebf743eeb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="game\ui">
+      <UniqueIdentifier>{bf12b0ee-0f49-40c7-a7ee-23d2222fdad5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\entities">
+      <UniqueIdentifier>{9ba44d2a-da66-4a88-b7de-e88fc62aa080}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="include\utils\Utilities.cpp">
@@ -126,6 +132,18 @@
     <ClCompile Include="game\Scenes\MenuScene.cpp">
       <Filter>game\scenes</Filter>
     </ClCompile>
+    <ClCompile Include="game\UI\HUD.cpp">
+      <Filter>game\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="include\utils\Timer.cpp">
+      <Filter>include\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="game\Scenes\GameOverScene.cpp">
+      <Filter>game\scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="game\System\MovementSystem.cpp">
+      <Filter>game\system</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="assets\ui\keyboard_arrows_horizontal.png">
@@ -139,9 +157,6 @@
     </Image>
     <Image Include="assets\ui\timer.png">
       <Filter>assets\ui</Filter>
-    </Image>
-    <Image Include="assets\characters\knight.png">
-      <Filter>assets\characters</Filter>
     </Image>
     <Image Include="assets\enemies\crab.png">
       <Filter>assets\enemies</Filter>
@@ -179,31 +194,10 @@
     <Image Include="assets\environment\table.png">
       <Filter>assets\environment</Filter>
     </Image>
-    <Image Include="assets\tiles\left_corner_high_ground.png">
-      <Filter>assets\tiles</Filter>
+    <Image Include="assets\characters\chara.png">
+      <Filter>assets\characters</Filter>
     </Image>
-    <Image Include="assets\tiles\left_corner_low_ground.png">
-      <Filter>assets\tiles</Filter>
-    </Image>
-    <Image Include="assets\tiles\middle_center_left.png">
-      <Filter>assets\tiles</Filter>
-    </Image>
-    <Image Include="assets\tiles\middle_center_right_ground.png">
-      <Filter>assets\tiles</Filter>
-    </Image>
-    <Image Include="assets\tiles\middle_ground.png">
-      <Filter>assets\tiles</Filter>
-    </Image>
-    <Image Include="assets\tiles\middle_high_ground.png">
-      <Filter>assets\tiles</Filter>
-    </Image>
-    <Image Include="assets\tiles\middle_low_ground.png">
-      <Filter>assets\tiles</Filter>
-    </Image>
-    <Image Include="assets\tiles\right_corner_high_ground.png">
-      <Filter>assets\tiles</Filter>
-    </Image>
-    <Image Include="assets\tiles\right_corner_low_ground.png">
+    <Image Include="assets\tiles\map.png">
       <Filter>assets\tiles</Filter>
     </Image>
   </ItemGroup>
@@ -285,6 +279,18 @@
     </ClInclude>
     <ClInclude Include="game\Scenes\MenuScene.h">
       <Filter>game\scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="game\UI\HUD.h">
+      <Filter>game\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="include\utils\Timer.h">
+      <Filter>include\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="game\Scenes\GameOverScene.h">
+      <Filter>game\scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="game\System\MovementSystem.h">
+      <Filter>game\system</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

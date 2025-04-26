@@ -5,12 +5,14 @@
 
 #include <unordered_map>
 #include <cstdint>
+#include <string>
 
 #include "libs/tigr.h"
 #include "utils/Vec2.h"
 #include "utils/Sprite.h"
 #include "ECS/Entity.h"
 
+#include "Engine/ENGINE.h"
 
 #pragma region | Components
 /**
@@ -34,7 +36,7 @@ struct Velocity
  */
 struct SpriteComponent
 {
-  Sprite sprite;
+  std::string textureName;
 };
 
 /**
@@ -55,7 +57,7 @@ class ComponentManager
 public:
   std::unordered_map<Entity, Position> positions;
   std::unordered_map<Entity, Velocity> velocities;
-  std::unordered_map<Entity, Sprite> sprites;
+  std::unordered_map<Entity, SpriteComponent> sprites;
   std::unordered_map<Entity, TagPlayer> players;
   std::unordered_map<Entity, TagEnemy> enemies;
 
@@ -100,17 +102,21 @@ private:
     {
       return velocities;
     }
-    else if constexpr (std::is_same<T, Sprite>::value)
+    else if constexpr (std::is_same<T, SpriteComponent>::value)
     {
       return sprites;
     }
     else if constexpr (std::is_same<T, TagPlayer>::value)
     {
-      players;
+      return players;
     }
     else if constexpr (std::is_same<T, TagEnemy>::value)
     {
-      enemies;
+      return enemies;
+    }
+    else
+    {
+      ENGINE::Log("ComponentManager", "GetComponentMap", "ERROR: Component type not found!");
     }
   }
 };
