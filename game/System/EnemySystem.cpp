@@ -1,37 +1,59 @@
 #include "EnemySystem.h"
 
 #include <vector>
+#include <cstdlib> // for rand and srand
+#include <ctime> // for seed generation
 
-#include "ecs/System.h"
-#include "ECS/Component.h"
-#include "ECS/Coordinator.h"
+#include "Engine/Manager/TimerManager.h"
 
 
 EnemySystem::EnemySystem()
 {
   m_fSpawnTimer = 5.0f;
+
+  // we create the timer
+  m_pTimer = new Timer(m_fSpawnTimer, 0.0f, true);
 }
 
 void EnemySystem::SpawnEnemy()
 {
-  return;
+  // if the timer has finished
+  if (m_pTimer->IsFinished())
+  {
+    // we generate a new seed for the rand()
+    std::srand(static_cast<unsigned int>(std::time(nullptr)));
+    Vec2 pos = Vec2((std::rand() % 500), 16.f);
+
+    // we create a new enemy with a random type
+    Enemy* enemy = new Enemy(pos, static_cast<EnemyType>(std::rand() % 3));
+
+    // we add the enemy to the vector
+    m_lEnemies.push_back(enemy);
+    // and reset the timer
+    m_pTimer->Reset();
+  }
 }
 
 void EnemySystem::Update()
 {
-  for (const Entity& entity : m_lEntities)
+  SpawnEnemy();
+
+  for (Enemy* enemy : m_lEnemies)
   {
-    Position& position = Coordinator::GetInstance().GetComponent<Position>(entity);
-    Velocity& velocity = Coordinator::GetInstance().GetComponent<Velocity>(entity);
+    enemy->Update();
+  }
 
-    position.pos.x += velocity.vel.x;
-    position.pos.y += velocity.vel.y;
-
-    //@review -> qui puoi aggiungere altre logiche
+  // updating the local timer with the delta time
+  if (!m_pTimer->IsFinished())
+  {
+    m_pTimer->m_fElapsed += TimerManager::GetInstance().GetDeltaTime();
   }
 }
 
-void EnemySystem::RemoveEntity(Entity _entity)
+void EnemySystem::Draw()
 {
-  m_lEntities.erase(std::remove(m_lEntities.begin(), m_lEntities.end(), _entity), m_lEntities.end());
+  for (Enemy* enemy : m_lEnemies)
+  {
+    enemy->Draw();
+  }
 }

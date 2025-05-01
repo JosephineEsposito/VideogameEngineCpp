@@ -4,8 +4,6 @@
 #include <stdio.h>
 
 #include "libs/tigr.h"
-
-#include "utils/Color.h"
 #include "utils/Vec2.h"
 
 #include "Engine/Manager/TimerManager.h"
@@ -41,7 +39,7 @@ ENGINE::~ENGINE()
 
 bool ENGINE::Init()
 {
-  m_BackgroundColor.setColor(0xf2, 0xf2, 0xe9);
+  m_BackgroundColor.SetColor(0xf2, 0xf2, 0xe9);
 
   // we create a window with TiGR
   m_pScreen = tigrWindow(m_iScreenWidth, m_iScreenHeight, m_cTitle, 0);
@@ -76,7 +74,7 @@ bool ENGINE::Quit()
 void ENGINE::Clear()
 {
   // clearing the screen
-  tigrClear(m_pScreen, m_BackgroundColor.getColor());
+  tigrClear(m_pScreen, m_BackgroundColor.GetColor());
 }
 
 
@@ -129,12 +127,13 @@ void ENGINE::Log(const char* _class, const char* _method, const char* _message)
 
 void ENGINE::Print(const char* _text, Color* _color)
 {
-  tigrPrint(m_pScreen, tfont, 0, 0, _color->getColor(), _text);
+  tigrPrint(m_pScreen, tfont, 0, 0, _color->GetColor(), _text);
 }
 
 void ENGINE::Print(std::string _text, Vec2* _pos, Color* _color)
 {
-  tigrPrint(m_pScreen, tfont, _pos->x, _pos->y, _color->getColor(), _text.c_str());
+  //@review -> scale the text
+  tigrPrint(m_pScreen, tfont, _pos->x, _pos->y, _color->GetColor(), _text.c_str());
 }
 
 #pragma endregion
@@ -142,7 +141,7 @@ void ENGINE::Print(std::string _text, Vec2* _pos, Color* _color)
 
 #pragma region | Getters
 
-Tigr* ENGINE::getScreen() const
+Tigr* ENGINE::GetScreen() const
 {
   return m_pScreen;
 }
@@ -167,18 +166,18 @@ ENGINE& ENGINE::GetInstance()
 
 #pragma region | Setters
 
-void ENGINE::setWindowSize(int& _width, int& _height)
+void ENGINE::SetWindowSize(const int& _width, const int& _height)
 {
   m_iScreenWidth = _width;
   m_iScreenHeight = _height;
 }
 
-void ENGINE::setWindowTitle(std::string& _title)
+void ENGINE::SetWindowTitle(const std::string& _title)
 {
   m_cTitle = _title.c_str();
 }
 
-void ENGINE::setBackgroundColor(Color& _color)
+void ENGINE::SetBackgroundColor(const Color& _color)
 {
   m_BackgroundColor = _color;
 }

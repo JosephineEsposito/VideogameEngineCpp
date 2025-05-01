@@ -2,7 +2,6 @@
 
 #include "ECS/Coordinator.h"
 #include "Engine/ENGINE.h"
-#include "Engine/Manager/TimerManager.h"
 
 CollisionSystem::CollisionSystem()
 { }
@@ -30,7 +29,6 @@ void CollisionSystem::Update()
       if (CheckCollision(aEntity, bEntity))
       {
         ENGINE::Log("Collision detected between %d and %d\n");
-        //@review -> aggiungi logica di risposta alla collisione
       }
     }
   }
@@ -43,16 +41,18 @@ void CollisionSystem::RemoveEntity(Entity _entity)
 
 bool CollisionSystem::CheckCollision(Entity _aEntity, Entity _bEntity)
 {
+  // we get the components of the entities
   Position& aPos = Coordinator::GetInstance().GetComponent<Position>(_aEntity);
   SpriteComponent& aSprite = Coordinator::GetInstance().GetComponent<SpriteComponent>(_aEntity);
 
   Position& bPos = Coordinator::GetInstance().GetComponent<Position>(_bEntity);
   SpriteComponent& bSprite = Coordinator::GetInstance().GetComponent<SpriteComponent>(_bEntity);
 
-  // Carica temporaneamente i dati della texture
+  // we load temporarly the sprites
   Sprite aTempSprite(aSprite.textureName.c_str());
   Sprite bTempSprite(bSprite.textureName.c_str());
 
+  // we check for collision and return a bool
   return (
     aPos.pos.x < bPos.pos.x + bTempSprite.texture->w &&
     aPos.pos.x + aTempSprite.texture->w > bPos.pos.x &&

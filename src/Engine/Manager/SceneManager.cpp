@@ -4,9 +4,21 @@
 
 #include <iostream>
 
+
+SceneManager::SceneManager()
+{
+  // we set the default scene
+  m_pCurrentScene = nullptr;
+  // we set the default state
+  m_eCurrentState = SceneState::INIT;
+}
+
+
 SceneManager& SceneManager::GetInstance()
 {
+  // we create the static instance of the manager
   static SceneManager instance;
+  // we return the instance
   return instance;
 }
 

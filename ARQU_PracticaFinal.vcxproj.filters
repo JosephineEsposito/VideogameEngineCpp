@@ -108,16 +108,7 @@
     <ClCompile Include="game\System\PlayerSystem.cpp">
       <Filter>game\system</Filter>
     </ClCompile>
-    <ClCompile Include="game\System\RenderSystem.cpp">
-      <Filter>game\system</Filter>
-    </ClCompile>
     <ClCompile Include="include\utils\Color.cpp">
-      <Filter>include\utils</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Engine\Manager\SystemManager.cpp">
-      <Filter>src\engine\manager</Filter>
-    </ClCompile>
-    <ClCompile Include="include\utils\Sprite.cpp">
       <Filter>include\utils</Filter>
     </ClCompile>
     <ClCompile Include="include\utils\Scene.cpp">
@@ -143,6 +134,24 @@
     </ClCompile>
     <ClCompile Include="game\System\MovementSystem.cpp">
       <Filter>game\system</Filter>
+    </ClCompile>
+    <ClCompile Include="game\Entities\BaseCharacter.cpp">
+      <Filter>game\entities</Filter>
+    </ClCompile>
+    <ClCompile Include="game\Entities\Player.cpp">
+      <Filter>game\entities</Filter>
+    </ClCompile>
+    <ClCompile Include="game\Entities\Enemy.cpp">
+      <Filter>game\entities</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Engine\Manager\SystemManager.cpp">
+      <Filter>src\engine\manager</Filter>
+    </ClCompile>
+    <ClCompile Include="include\utils\Sprite.cpp">
+      <Filter>include\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Engine\Manager\GameManager.cpp">
+      <Filter>src\engine\manager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -253,17 +262,11 @@
     <ClInclude Include="game\System\PlayerSystem.h">
       <Filter>game\system</Filter>
     </ClInclude>
-    <ClInclude Include="game\System\RenderSystem.h">
-      <Filter>game\system</Filter>
-    </ClInclude>
     <ClInclude Include="include\utils\Color.h">
       <Filter>include\utils</Filter>
     </ClInclude>
     <ClInclude Include="include\enums\SceneState.h">
       <Filter>include\enums</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Engine\Manager\SystemManager.h">
-      <Filter>src\engine\manager</Filter>
     </ClInclude>
     <ClInclude Include="include\utils\Sprite.h">
       <Filter>include\utils</Filter>
@@ -291,6 +294,24 @@
     </ClInclude>
     <ClInclude Include="game\System\MovementSystem.h">
       <Filter>game\system</Filter>
+    </ClInclude>
+    <ClInclude Include="game\Entities\BaseCharacter.h">
+      <Filter>game\entities</Filter>
+    </ClInclude>
+    <ClInclude Include="game\Entities\Player.h">
+      <Filter>game\entities</Filter>
+    </ClInclude>
+    <ClInclude Include="game\Entities\Enemy.h">
+      <Filter>game\entities</Filter>
+    </ClInclude>
+    <ClInclude Include="include\enums\EnemyType.h">
+      <Filter>include\enums</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\Manager\SystemManager.h">
+      <Filter>src\engine\manager</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\Manager\GameManager.h">
+      <Filter>src\engine\manager</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

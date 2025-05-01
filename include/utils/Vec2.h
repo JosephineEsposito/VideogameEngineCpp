@@ -3,60 +3,147 @@
 class Vec2
 {
 public:
-	// ---------- Variables ---------- //
-	float x;
-	float y;
-
-	float alpha;
-
-	// ---------- Constructores ---------- //
-
-	//Constructor de default
+#pragma region | Constructor
+	/**
+	 * @brief The default constructor
+	 */
 	Vec2();
-	//Constructor con valores float
+
+	/**
+	 * @brief The constructor of the vector
+	 * @param _x The x value of the vector
+	 * @param _y The y value of the vector
+	 */
 	Vec2(float _x, float _y);
+#pragma endregion
 
-	// ---------- Operaciones ---------- //
 
-	// To obtain the sum between self and vector 2
+#pragma region | Operators
+	
+	
+	/**
+	 * @brief Returns the sum between self and vector
+	 * @param other The vector to sum to
+	 * @return The sum of self and vector
+	 */
 	Vec2 operator+(const Vec2& other);
-	// To obtain the sum between self and float
+	
+	/**
+	 * @brief Returns the sum between self and float
+	 * @param other The float to sum to
+	 * @return The sum of self and float
+	 */
 	Vec2 operator+(const float& other);
 
-	// To obtain the rest between self and vector 2
+	
+	/**
+	 * @brief Returns the rest between self and vector
+	 * @param other The vector to rest to
+	 * @return The difference between self and vector
+	 */
 	Vec2 operator-(const Vec2& other);
-	// To obtain the rest between self and number
+	
+	/**
+	 * @brief Returns the rest between self and float
+	 * @param other The float to rest to
+	 * @return The difference between self and float
+	 */
 	Vec2 operator-(const float& other);
 
-	// To obtain the product between self and a float
+	
+	/**
+	 * @brief Multiplies self with a float
+	 * @param other The float to multiply
+	 * @return The result of the multiplication
+	 */
 	Vec2 operator*(const float& other);
 
-	// To obtain the dot product between two vectors
+	
+	/**
+	 * @brief The dot product between two vectors
+	 * @param other The other vector of the dot product
+	 * @return The result of the dot product
+	 */
 	float dot(const Vec2& other);
 
-	// To obtain the division between self and a float
+	
+	/**
+	 * @brief The division between self and a float
+	 * @param other The float to divide to
+	 * @return The result of the division
+	 */
 	Vec2 operator/(const float& other);
+#pragma endregion
 
-	// To obtain the absolute value of self
+
+	
+	/**
+	 * @brief Returns the absolute value of self
+	 * @return A float representing the absolute value
+	 */
 	float absolute();
-	// To obtain the longitude of self
+	
+
+	/**
+	 * @brief Returns the lenght of the vector
+	 * @return A float representing the lenght of the vector
+	 */
 	float longitud();
 
-	// To obtain the normal of self
+	
+	/**
+	 * @brief Returns the normalized vector
+	 * @return The normalized vector
+	 */
 	Vec2 normal();
 
-	// ---------- Metodos adicionales ---------- //
-
-	// To obtain the angle between self and other vector
+	
+	/**
+	 * @brief Returns the angle between self and another vector
+	 * @param other The other vector
+	 * @return A float representing the angle between the vectors
+	 */
 	float angle(const Vec2& other) const;
 
-	// To obtain distance between self and other vector
+	
+	/**
+	 * @brief Returns the distance between self and another vector
+	 * @param other The other vector
+	 * @return A float representing the distance
+	 */
 	float distance(const Vec2& other) const;
 
-	// To rotate self given the angle and the origin
+	
+	/**
+	 * @brief Rotates self given the angle and the origin of the rotation
+	 * @param angle The angle of rotation
+	 * @param fixedLen The origin
+	 */
 	void rotate(const float& angle, const float& fixedLen);
 
+	/**
+	 * @brief Rotates self given an angle
+	 * @param angle The angle of rotation
+	 */
 	void rot2(const float& angle);
+
+
+#pragma region | Variables
+	/**
+	 * @brief The x value of the  vector
+	 */
+	float x;
+
+	/**
+	 * @brief The y value of the vector
+	 */
+	float y;
+
+	/**
+	 * @brief The alpha angle of the vector
+	 */
+	float alpha;
+#pragma endregion
 };
 
 

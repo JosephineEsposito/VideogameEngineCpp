@@ -6,7 +6,6 @@
 #include "System/CollisionSystem.h"
 #include "System/EnemySystem.h"
 #include "System/PlayerSystem.h"
-#include "System/RenderSystem.h"
 
 
 Coordinator& Coordinator::GetInstance()
@@ -29,10 +28,9 @@ void Coordinator::Init()
   m_pSystemManager->RegisterSystem<PlayerSystem>();
   m_pSystemManager->RegisterSystem<EnemySystem>();
   m_pSystemManager->RegisterSystem<CollisionSystem>();
-  m_pSystemManager->RegisterSystem<RenderSystem>();
 }
 
-// ========== ENTITY ==========
+
 
 Entity Coordinator::CreateEntity()
 {

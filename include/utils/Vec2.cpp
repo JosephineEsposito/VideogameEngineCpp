@@ -1,15 +1,13 @@
-
-
-
 #include "Vec2.h"
 
 #define _USE_MATH_DEFINES
 #include <cmath>
 
+// defining the PI constant
 #define PI 3.14159265358979323846f
 
-// ---------- Constructores ---------- //
 
+#pragma region | Constructor
 Vec2::Vec2()
 {
 	x = 0;
@@ -22,10 +20,10 @@ Vec2::Vec2(float _x, float _y)
 	y = _y;
 	alpha = 0;
 }
+#pragma endregion
 
 
-// ---------- Operaciones ---------- //
-
+#pragma region | Operators
 Vec2 Vec2::operator+(const Vec2& other)
 {
 	return Vec2(x + other.x, y + other.y);
@@ -62,6 +60,7 @@ Vec2 Vec2::operator/(const float& other)
 {
 	return Vec2(x / other, y / other);
 }
+#pragma endregion
 
 
 
@@ -96,8 +95,6 @@ Vec2 Vec2::normal()
 
 
 
-// ---------- Metodos adicionales ---------- //
-
 float Vec2::angle(const Vec2& other) const
 {
 	float dot = (x * other.x + y * other.y);
@@ -105,7 +102,7 @@ float Vec2::angle(const Vec2& other) const
 	float norm_other = sqrt((other.x * other.x) + (other.y * other.y));
 
 	float alpha = acos((dot) / (norm_self * norm_other));
-	return alpha; // per convertirlo in gradi *180/pi 
+	return alpha;
 }
 
 float Vec2::distance(const Vec2& other) const

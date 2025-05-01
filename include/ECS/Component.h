@@ -7,7 +7,6 @@
 #include <cstdint>
 #include <string>
 
-#include "libs/tigr.h"
 #include "utils/Vec2.h"
 #include "utils/Sprite.h"
 #include "ECS/Entity.h"
@@ -39,15 +38,6 @@ struct SpriteComponent
   std::string textureName;
 };
 
-/**
- * @brief Empty component to mark the player
- */
-struct TagPlayer {};
-
-/**
- * @brief Empty component to mark enemies
- */
-struct TagEnemy {};
 
 #pragma endregion
 
@@ -55,32 +45,63 @@ struct TagEnemy {};
 class ComponentManager
 {
 public:
+  /**
+   * @brief The map of entity with position component
+   */
   std::unordered_map<Entity, Position> positions;
+
+  /**
+   * @brief The map of entity with velocity component
+   */
   std::unordered_map<Entity, Velocity> velocities;
+
+  /**
+   * @brief The map of entity with sprite component
+   */
   std::unordered_map<Entity, SpriteComponent> sprites;
-  std::unordered_map<Entity, TagPlayer> players;
-  std::unordered_map<Entity, TagEnemy> enemies;
 
 #pragma region | Templates
-
+  /**
+   * @brief Adds a new component to an entity
+   * @tparam T The component class to add
+   * @param _entity The entity
+   * @param _component The component to add
+   */
   template<typename T>
   void AddComponent(Entity _entity, T _component)
   {
     GetComponentMap<T>()[_entity] = _component;
   }
 
+  /**
+   * @brief Returns the component from an entity
+   * @tparam T The component class
+   * @param _entity The entity
+   * @return The component of the entity
+   */
   template<typename T>
   T& GetComponent(Entity _entity)
   {
     return GetComponentMap<T>()[_entity];
   }
 
+  /**
+   * @brief Checks if an entity has a component
+   * @tparam T The component class
+   * @param _entity The entity
+   * @return A bool stating if the entity has the component
+   */
   template<typename T>
   bool HasComponent(Entity _entity)
   {
     return GetComponentMap<T>().find(_entity) != GetComponentMap<T>().end();
   }
 
+  /**
+   * @brief Removes a component from an entity
+   * @tparam T The component class
+   * @param _entity The entity
+   */
   template<typename T>
   void RemoveComponent(Entity _entity)
   {
@@ -91,6 +112,11 @@ public:
 
 
 private:
+  /**
+   * @brief Returns the component map
+   * @tparam T The component class
+   * @return The map of the entitiy and component
+   */
   template<typename T>
   std::unordered_map<Entity, T>& GetComponentMap()
   {
@@ -105,14 +131,6 @@ private:
     else if constexpr (std::is_same<T, SpriteComponent>::value)
     {
       return sprites;
-    }
-    else if constexpr (std::is_same<T, TagPlayer>::value)
-    {
-      return players;
-    }
-    else if constexpr (std::is_same<T, TagEnemy>::value)
-    {
-      return enemies;
     }
     else
     {

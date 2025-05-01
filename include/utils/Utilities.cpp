@@ -1,7 +1,3 @@
-// JOSEPHINE ESPOSITO
-// 
-// Implementation of the namespace Utilities
-
 #include "libs/tigr.h"   // Tigr
 #include <string>        // string
 #include <fstream>       // ofstream, ifstream, fstream | file management
@@ -28,7 +24,7 @@ namespace utils
     } while (_ms > 0);
   }
 
-  void write_file(std::string data, std::string fileName)
+  void write_file_xml(std::string data, std::string fileName)
   {
     std::ofstream out(fileName, std::ofstream::binary); // creating the file
 
@@ -37,6 +33,36 @@ namespace utils
     out.write(data.c_str(), size);  // writing into the file
 
     out.close();  // always close the ofstream after finishing writing
+  }
+
+  void write_file(std::string data, std::string fileName)
+  {
+    std::ofstream outFile(fileName);
+    
+    if (!outFile)
+    {
+      puts("Error: Unable to open the file to write");
+      return;
+    }
+
+    outFile << data;
+    outFile.close();
+  }
+
+  std::string read_file(std::string fileName)
+  {
+    std::ifstream inFile(fileName);
+
+    if (!inFile)
+    {
+      puts("Error: Unable to open the file to read");
+      return "";
+    }
+
+    std::string data((std::istreambuf_iterator<char>(inFile)), std::istreambuf_iterator<char>());
+
+    inFile.close();
+    return data;
   }
 
 }

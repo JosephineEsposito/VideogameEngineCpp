@@ -3,14 +3,12 @@
 **********************************************************/
 #pragma once
 
-#include <memory>
-#include <string>
-#include <sstream>
+#include <string> // used for the logs and prints
 
-#include "utils/Color.h"
+#include "utils/Color.h" // used to define the background of the screen
 
 class Tigr;
-class Vec2;
+class Vec2; // used for positions
 
 
 class ENGINE
@@ -36,6 +34,11 @@ public:
 #pragma endregion
 
 #pragma region | Operators
+  /**
+   * @brief The assign and copy operator removed to prevent more than one instances of the engine at the time
+   * @param  The engine to copy
+   * @return A copy of the engine
+   */
   ENGINE& operator=(const ENGINE) = delete;
 #pragma endregion
 
@@ -111,34 +114,46 @@ public:
    * @brief To get the window of the engine
    * @return A pointer to the engine's window
    */
-  Tigr* getScreen() const;
+  Tigr* GetScreen() const;
 
+  /**
+   * @brief To get the width of the screen
+   * @return An int representing the width of the screen
+   */
   int GetWidth() const;
 
+  /**
+   * @brief To get the height of the screen
+   * @return An int representing the height of the screen
+   */
   int GetHeight() const;
 
+  /**
+   * @brief Returns the instance of the engine
+   * @return A reference of the instance of the engine
+   */
   static ENGINE& GetInstance();
 #pragma endregion
 
 #pragma region | Setters
   /**
    * @brief To set the engine's window's size
-   * @param _width 
-   * @param _height 
+   * @param _width A reference of the window's width
+   * @param _height A reference of the window's height
    */
-  void setWindowSize(int& _width, int& _height);
+  void SetWindowSize(const int& _width, const int& _height);
 
   /**
    * @brief To set the window's title
    * @param _title A string representing the title of the screen
    */
-  void setWindowTitle(std::string& _title);
+  void SetWindowTitle(const std::string& _title);
 
   /**
    * @brief To set the bakcground of the engine's window
-   * @param _color 
+   * @param _color A Color object containing the background color of the screen
    */
-  void setBackgroundColor(Color& _color);
+  void SetBackgroundColor(const Color& _color);
 #pragma endregion
 
 

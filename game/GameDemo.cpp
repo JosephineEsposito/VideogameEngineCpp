@@ -17,7 +17,9 @@
 
 void GameDemo::Run()
 {
+  // we get the engine instance
   ENGINE& engine = ENGINE::GetInstance();
+  // we get the instnace of the scene manager
   SceneManager& sceneManager = SceneManager::GetInstance();
 
   // creating the scenes
@@ -31,6 +33,7 @@ void GameDemo::Run()
   // main game loop
   while (engine.IsRunning())
   {
+    // we start the frame and calculate delta time
     engine.BeginFrame();
 
     // update the current scene
@@ -38,6 +41,7 @@ void GameDemo::Run()
     // draw the current scene
     sceneManager.Draw();
 
+    // we end the frame and update the logic of the engine
     engine.EndFrame();
   }
 }

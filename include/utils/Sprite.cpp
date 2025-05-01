@@ -24,7 +24,6 @@ Sprite::~Sprite()
 }
 
 
-
 void Sprite::Draw(Tigr* window, int x, int y) const
 {
 	Vec2 dest = Vec2(x, y);

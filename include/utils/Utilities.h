@@ -1,22 +1,46 @@
-// JOSEPHINE ESPOSITO
-// 
-// Definition of the namespace Utilities:
-// - time related functions
-// - write and read to and from a file
-//    + - the file must be of xml format data
-
+/*********************************************************
+* The definition of the namespace Utilities:
+* - time related functions
+* - write and read to and from a file
+* --+ the file must be of xml format data
+**********************************************************/
 #include <string>
+#include <sstream>
 
 namespace utils
 {
-  // Returns seconds
+  /**
+   * @brief Returns the time in seconds
+   * @return A double representing the seconds
+   */
   double time_ss();
 
-  // Method to pause the engine
+  /**
+   * @brief Pauses the engine
+   * @param _ms The milliseconds to wait before unpausing
+   */
   void wait(float _ms);
 
-  // Method to write into a file
+  /**
+   * @brief Writes into an xml file
+   * @param data The data to write
+   * @param fileName The name of the file
+   */
+  void write_file_xml(std::string data, std::string fileName);
+
+  /**
+   * @brief Writes into a file
+   * @param data The data to write
+   * @param fileName The name of the file
+   */
   void write_file(std::string data, std::string fileName);
+
+  /**
+   * @brief Reads a file
+   * @param fileName The name of the file
+   * @return The data string
+   */
+  std::string read_file(std::string fileName);
 
   /**
    * @brief A method to convert any variable to string

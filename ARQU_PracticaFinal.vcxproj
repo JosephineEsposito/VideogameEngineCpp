@@ -129,6 +129,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ARQU_PracticaFinal.cpp" />
+    <ClCompile Include="game\Entities\BaseCharacter.cpp" />
+    <ClCompile Include="game\Entities\Enemy.cpp" />
+    <ClCompile Include="game\Entities\Player.cpp" />
     <ClCompile Include="game\GameDemo.cpp" />
     <ClCompile Include="game\Scenes\GameOverScene.cpp" />
     <ClCompile Include="game\Scenes\GameScene.cpp" />
@@ -137,7 +140,6 @@
     <ClCompile Include="game\System\EnemySystem.cpp" />
     <ClCompile Include="game\System\MovementSystem.cpp" />
     <ClCompile Include="game\System\PlayerSystem.cpp" />
-    <ClCompile Include="game\System\RenderSystem.cpp" />
     <ClCompile Include="game\UI\HUD.cpp" />
     <ClCompile Include="include\ECS\Component.cpp" />
     <ClCompile Include="include\ECS\Coordinator.cpp" />
@@ -151,6 +153,7 @@
     <ClCompile Include="include\utils\Utilities.cpp" />
     <ClCompile Include="include\utils\Vec2.cpp" />
     <ClCompile Include="src\Engine\ENGINE.cpp" />
+    <ClCompile Include="src\Engine\Manager\GameManager.cpp" />
     <ClCompile Include="src\Engine\Manager\InputManager.cpp" />
     <ClCompile Include="src\Engine\Manager\SceneManager.cpp" />
     <ClCompile Include="src\Engine\Manager\SystemManager.cpp" />
@@ -177,6 +180,9 @@
     <Image Include="assets\ui\timer.png" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="game\Entities\BaseCharacter.h" />
+    <ClInclude Include="game\Entities\Enemy.h" />
+    <ClInclude Include="game\Entities\Player.h" />
     <ClInclude Include="game\GameDemo.h" />
     <ClInclude Include="game\Scenes\GameOverScene.h" />
     <ClInclude Include="game\Scenes\GameScene.h" />
@@ -185,12 +191,12 @@
     <ClInclude Include="game\System\EnemySystem.h" />
     <ClInclude Include="game\System\MovementSystem.h" />
     <ClInclude Include="game\System\PlayerSystem.h" />
-    <ClInclude Include="game\System\RenderSystem.h" />
     <ClInclude Include="game\UI\HUD.h" />
     <ClInclude Include="include\ECS\Component.h" />
     <ClInclude Include="include\ECS\Coordinator.h" />
     <ClInclude Include="include\ECS\Entity.h" />
     <ClInclude Include="include\ECS\System.h" />
+    <ClInclude Include="include\enums\EnemyType.h" />
     <ClInclude Include="include\enums\SceneState.h" />
     <ClInclude Include="include\libs\ecs.hh" />
     <ClInclude Include="include\libs\pugiconfig.hpp" />
@@ -203,6 +209,7 @@
     <ClInclude Include="include\utils\Utilities.h" />
     <ClInclude Include="include\utils\Vec2.h" />
     <ClInclude Include="src\Engine\ENGINE.h" />
+    <ClInclude Include="src\Engine\Manager\GameManager.h" />
     <ClInclude Include="src\Engine\Manager\InputManager.h" />
     <ClInclude Include="src\Engine\Manager\SceneManager.h" />
     <ClInclude Include="src\Engine\Manager\SystemManager.h" />

@@ -1,98 +1,92 @@
 #include "GameScene.h"
 
 #include "Engine/ENGINE.h"
-
 #include "Engine/Manager/TimerManager.h"
 #include "Engine/Manager/SceneManager.h"
 #include "Engine/Manager/InputManager.h"
-
+#include "Engine/Manager/GameManager.h"
 #include "System/MovementSystem.h"
-
+#include "Entities/Enemy.h"
 #include "utils/Vec2.h"
-
+#include "utils/Utilities.h"
 
 GameScene::GameScene() : Scene(SceneState::PLAYING)
 {
   ENGINE::Log("GameScene", "Constructor", "Constructor called.");
   // we set the scene state
   m_eState = SceneState::PLAYING;
-  m_hud = HUD();
 
-  map = nullptr;
-  player = 0;
+  m_oHUD = HUD();
+
+  m_pMap = nullptr;
+  m_pPlayer = nullptr;
+
+  m_pEnemySpawner = nullptr;
 }
 
 void GameScene::Init()
 {
   ENGINE::Log("GameScene", "Init", "Starting Init");
 
-  m_hud.Init();
+  m_oHUD.Init();
 
-  map = new Sprite("assets/tiles/map.png");
+  m_pMap = new Sprite("assets/tiles/map.png");
 
+  m_pPlayer = new Player(Vec2(384.0f, 768.0f), Vec2(64.0f, 0.0f));
 
-  player = Coordinator::GetInstance().CreateEntity();
+  m_pEnemySpawner = new EnemySystem();
 
-  Position playerPos = { Vec2(384.0f, 768.0f) };
-  Coordinator::GetInstance().AddComponent<Position>(player, playerPos);
-
-  Velocity playerVel = { Vec2(64.0f, 0.0f) };
-  Coordinator::GetInstance().AddComponent<Velocity>(player, playerVel);
-
-  SpriteComponent playerSprite;
-  playerSprite.textureName = "assets/characters/chara.png";
-  Coordinator::GetInstance().AddComponent<SpriteComponent>(player, playerSprite);
-
-  TimerManager::GetInstance().CreateTimer("LevelTimer", 120.0f);
+  GameManager::GetInstance().LoadScore();
+  TimerManager::GetInstance().m_pLevelTimer->Reset();
 }
 
 
 void GameScene::Update()
 {
-  // esegui logica, chiama gli update di ecs, etc.
-  m_hud.Update();
-
+  m_oHUD.Update();
+  m_pPlayer->Update();
+  m_pEnemySpawner->Update();
   
-  if (TimerManager::GetInstance().IsTimerFinished("LevelTimer"))
+  // we check for collision
+  if (!m_pPlayer)
   {
-    ENGINE::Log("GameScene", "Update", "Time's up! Calculate Score and show game over.");
-    
-    SceneManager::GetInstance().ChangeScene(SceneState::GAMEOVER);
+    return;
   }
-
-
-  if (InputManager::GetInstance().IsKeyPressed(65))
+  for (Enemy* enemy : m_pEnemySpawner->m_lEnemies)
   {
-    Position& playerPos = Coordinator::GetInstance().GetComponent<Position>(player);
-    Velocity& playerVel = Coordinator::GetInstance().GetComponent<Velocity>(player);
+    if (m_pCollisionSystem.CheckCollision(m_pPlayer->entity, enemy->entity))
+    {
+      // we save the timer
+      float score = static_cast<float>(TimerManager::GetInstance().m_pLevelTimer->m_fElapsed);
 
-    MovementSystem::DisplaceToLeft(playerPos.pos, playerVel.vel);
-  }
-  if (InputManager::GetInstance().IsKeyPressed(68))
-  {
-    Position& playerPos = Coordinator::GetInstance().GetComponent<Position>(player);
-    Velocity& playerVel = Coordinator::GetInstance().GetComponent<Velocity>(player);
+      // we verify and save the score
+      GameManager& gameManager = GameManager::GetInstance();
+      if (gameManager.IsNewHighScore(score))
+      {
+        ENGINE::GetInstance().Log("GameScene", "Update", "New highscore saved!");
+      }
 
-    MovementSystem::DisplaceToRight(playerPos.pos, playerVel.vel);
+      // we change scene
+      SceneManager::GetInstance().ChangeScene(SceneState::GAMEOVER);
+    }
   }
 }
 
 void GameScene::Draw()
 {
-  map->Draw(ENGINE::GetInstance().getScreen());
-  // esegui render, chiama i render di ecs, etc.
-  m_hud.Draw();
+  m_pMap->Draw(ENGINE::GetInstance().GetScreen());
 
-  Position& pos = Coordinator::GetInstance().GetComponent<Position>(player);
-  SpriteComponent& spriteComp = Coordinator::GetInstance().GetComponent<SpriteComponent>(player);
-
-  Sprite playerSprite(spriteComp.textureName);
-  playerSprite.Draw(ENGINE::GetInstance().getScreen(), pos.pos.x, pos.pos.y);
+  m_oHUD.Draw();
+  m_pPlayer->Draw();
+  m_pEnemySpawner->Draw();
 }
 
 void GameScene::Unload()
 {
-  // pulisci le risorse se serve
-  m_hud.Unload();
+  m_oHUD.Unload();
+  delete m_pPlayer;
+  m_pPlayer = nullptr;
+  delete m_pEnemySpawner;
+  m_pEnemySpawner = nullptr;
 }
 

@@ -1,6 +1,5 @@
 #include "Color.h"
 
-#include "libs/tigr.h"
 
 Color::Color()
 {
@@ -20,7 +19,7 @@ Color::~Color()
   m_uColor = tigrRGB(m_uRed, m_uGreen, m_uBlue);
 }
 
-void Color::setColor(unsigned char _r, unsigned char _g, unsigned char _b)
+void Color::SetColor(unsigned char _r, unsigned char _g, unsigned char _b)
 {
   m_uRed = _r;
   m_uGreen = _g;
@@ -29,7 +28,7 @@ void Color::setColor(unsigned char _r, unsigned char _g, unsigned char _b)
   m_uColor = tigrRGB(m_uRed, m_uGreen, m_uBlue);
 }
 
-TPixel Color::getColor() const
+TPixel Color::GetColor() const
 {
   return m_uColor;
 }
