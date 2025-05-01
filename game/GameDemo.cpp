@@ -28,7 +28,7 @@ void GameDemo::Run()
   sceneManager.RegisterScene(SceneState::GAMEOVER, new GameOverScene());
 
   // load the default scene
-  sceneManager.ChangeScene(SceneState::PLAYING); //@review <- change this back to menu
+  sceneManager.ChangeScene(SceneState::MENU);
 
   // main game loop
   while (engine.IsRunning())

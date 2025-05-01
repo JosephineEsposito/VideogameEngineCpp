@@ -44,7 +44,7 @@ void PlayerSystem::Update()
         // we clam the x coordinate to avoid going out
         position.pos.x = 0;
       }
-      if (position.pos.x > ENGINE::GetInstance().GetWidth() - 32) //@review players sprite width
+      if (position.pos.x > ENGINE::GetInstance().GetWidth() - 32)
       {
         // we clam the x coordinate to avoid going out
         position.pos.x = ENGINE::GetInstance().GetWidth() - 32;

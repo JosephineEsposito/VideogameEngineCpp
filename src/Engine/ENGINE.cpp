@@ -84,8 +84,6 @@ void ENGINE::BeginFrame()
   TimerManager::GetInstance().StartFrame();
 
   Clear();
-
-  //@review -> gestisci input qui
 }
 
 void ENGINE::EndFrame()
@@ -132,7 +130,6 @@ void ENGINE::Print(const char* _text, Color* _color)
 
 void ENGINE::Print(std::string _text, Vec2* _pos, Color* _color)
 {
-  //@review -> scale the text
   tigrPrint(m_pScreen, tfont, _pos->x, _pos->y, _color->GetColor(), _text.c_str());
 }
 
